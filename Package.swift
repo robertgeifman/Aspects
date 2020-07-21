@@ -9,7 +9,7 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "Aspects",
-            targets: ["Aspects"]),
+            targets: ["AspectsObjC", "Aspects"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -18,11 +18,16 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "Aspects",
-            dependencies: []),
-        .testTarget(
-            name: "AspectsTests",
-            dependencies: ["Aspects"]),
+		.target(
+		   name: "AspectsObjC", // 1
+		   dependencies: [], // 2
+		   cSettings: [
+			  .headerSearchPath("Internal"), // 5
+		   ]
+		),
+		.target(
+		   name: "Aspects", // 6
+		   dependencies: ["AspectsObjC"] // 7
+		),
     ]
 )
