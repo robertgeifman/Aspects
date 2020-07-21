@@ -6,12 +6,12 @@
 import Foundation
 import AspectsObjC
 
-extension NSObject {
+public extension NSObject {
 	typealias ReplacementBlock = @convention(block) (AspectInfo) -> Void
 }
 
 // swiftlint:disable implicitly_unwrapped_optional
-extension NSObject {
+public extension NSObject {
 	@nonobjc final func hook(before selector: Selector!, body: @escaping ReplacementBlock) throws -> AspectToken {
 		try hook(selector, options: .positionBefore, body: body)
 	}
