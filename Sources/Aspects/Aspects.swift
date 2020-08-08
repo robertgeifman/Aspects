@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import AspectsObjC
+@_exported import AspectsObjC
 
 public extension NSObject {
 	typealias ReplacementBlock = @convention(block) (AspectInfo) -> Void
