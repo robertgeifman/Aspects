@@ -1,17 +1,20 @@
 //
+//  Aspects.swift
+//  Aspects - A delightful, simple library for aspect oriented programming.
+//
 //  Created by Robert Geifman on 14/12/2019.
-//  Copyright © 2019 Peter Steinberger. All rights reserved.
+//  Copyright © 2014 Peter Steinberger. All rights reserved.
 //
 
 import Foundation
-import AspectsObjC
+@_exported import AspectsObjC
 
-extension NSObject {
+public extension NSObject {
 	typealias ReplacementBlock = @convention(block) (AspectInfo) -> Void
 }
 
 // swiftlint:disable implicitly_unwrapped_optional
-extension NSObject {
+public extension NSObject {
 	@nonobjc final func hook(before selector: Selector!, body: @escaping ReplacementBlock) throws -> AspectToken {
 		try hook(selector, options: .positionBefore, body: body)
 	}
